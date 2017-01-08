@@ -1,0 +1,48 @@
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+li input {
+    max-width: 1000px;
+}
+
+li label {
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+li i {
+    float: right;
+    position: relative;
+    margin: 0 5px;
+}
+
+textarea {
+    display: inline-block;
+    border: 0;
+    width: 100%;
+}
+
+.text-red {
+    color: #e74c3c;
+}
+.text-blue {
+    color: #3498db;
+}
+
+.input-h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

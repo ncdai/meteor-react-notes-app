@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Input from 'react-input-autosize';
+
 import { Notes } from '../api/notes.js';
 
 import NoteItem from './NoteItem.jsx';
@@ -41,7 +43,7 @@ class NotesList extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} value={this.state.text} placeholder="Enter your note" />
+                    <Input onChange={this.handleChange} value={this.state.text} placeholder="Enter your note" />
                 </form>
                 <ul>
                     {this.renderNote()}

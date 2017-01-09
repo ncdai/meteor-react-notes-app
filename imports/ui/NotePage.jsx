@@ -32,7 +32,7 @@ class NoteName extends Component {
         this.setState({text: e.target.value});
     }
     handleSave() {
-        if (this.state.text != '') {
+        if (this.state.text) {
             Notes.update(this.props.note._id, { $set: {name: this.state.text} });
         }
         this.setState({onEdit: false});
@@ -73,7 +73,7 @@ class NoteContent extends Component {
         this.setState({text: e.target.value});
     }
     handleSubmit() {
-        Notes.update(this.props.note._id, { $set: { content: this.state.text } });
+        Notes.update(this.props.note._id, { $set: { content: this.state.text ? this.state.text : '' } });
     }
 
     render() {

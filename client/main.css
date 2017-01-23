@@ -1,41 +1,23 @@
-a, a:hover, a:focus, a:active {
-    text-decoration: none;
+body {
+    background: #f7f7f7;
+    font-size: 14px;
+    line-height: normal;
 }
 
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-li {
-    padding: 10px 0;
-    border-bottom: 1px solid #f1f1f1;
-}
-
-li input {
-    max-width: 1000px;
-    outline: none;
+#menu-head {
+    background: #fff;
+    border-radius: 0;
     border: 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 
-li label {
-    cursor: pointer;
-    font-weight: normal;
-    margin-bottom: 0;
+.form-control, .form-control:hover, .form-control:focus, .form-control:active {
+    box-shadow: none;
 }
 
-li i {
-    float: right;
-    position: relative;
-    margin: 0 5px;
-}
-
-textarea {
-    display: inline-block;
+.no-border {
     border: 0;
-    width: 100%;
-    max-width: 100%;
-    outline: none;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 
 .text-red {
@@ -45,8 +27,33 @@ textarea {
     color: #3498db;
 }
 
-.input-h4 {
+.action a {
+    margin: 0 0 0 10px;
+}
+
+#notes-list .list-group-item {
+    border-radius: 0;
+}
+#notes-list .input-edit {
+    height: 38px;
+    padding: 0px 15px;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    outline: 0;
+    margin-bottom: -1px;
+}
+
+.note-text {
+    margin-top: 0;
+}
+
+.input-note-text {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 10px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    color: #3498db;
 }

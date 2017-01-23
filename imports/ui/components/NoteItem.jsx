@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Link } from 'react-router';
-import Input from 'react-input-autosize';
 
-import { Notes } from '../api/notes.js';
+import { Notes } from '../../api/notes.js';
 
 export default class Note extends Component {
     constructor(props) {
@@ -26,19 +25,17 @@ export default class Note extends Component {
     handleEdit() {
         this.setState({
             onEdit: true,
-            text: this.props.note.name
+            text: this.props.note.text
         });
     }
     handleChange(e) {
         this.setState({text: e.target.value});
     }
     handleSave() {
-        Notes.update(this.props.note._id, {
-            $set: {name: this.state.text}
-        });
+        Meteor.call('notes.update.text', this.props.note._id, this.state.text);
         this.setState({onEdit: false});
         if (!this.state.text) {
-            Notes.remove(this.props.note._id);
+            Meteor.call('notes.remove', this.props.note._id);
         }
     }
     handleSubmit(e) {
@@ -49,25 +46,25 @@ export default class Note extends Component {
         return this.handleSave();
     }
     handleDelete() {
-        Notes.remove(this.props.note._id);
+        Meteor.call('notes.remove', this.props.note._id);
     }
 
     render() {
         if (! this.state.onEdit) {
             return (
-                <li key={this.props.note._id}>
-                    <label onClick={this.handleEdit}>{this.props.note.name}</label>
-                    <a href="#" onClick={this.handleDelete}><i className="glyphicon glyphicon-remove text-red"></i></a>
-                    <Link to={"/note/" + this.props.note._id}><i className="glyphicon glyphicon-eye-open text-blue"></i></Link>
+                <li className="list-group-item" key={this.props.note._id}>
+                    <span onClick={this.handleEdit}>{this.props.note.text}</span>
+                    <div className="pull-right action">
+                        <Link to={"/note/" + this.props.note._id}><i className="glyphicon glyphicon-eye-open text-blue"></i></Link>
+                        <a href="#" onClick={this.handleDelete}><i className="glyphicon glyphicon-remove text-red"></i></a>
+                    </div>
                 </li>
             );
         } else {
             return (
-                <li>
-                    <form onSubmit={this.handleSubmit}>
-                        <Input onChange={this.handleChange} onBlur={this.handleBlur} value={this.state.text} autoFocus />
-                    </form>
-                </li>
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} onBlur={this.handleBlur} className="form-control input-edit" value={this.state.text} autoFocus />
+                </form>
             );
         }
     }

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 import { Link } from 'react-router';
-
-import { Notes } from '../../api/notes.js';
 
 export default class Note extends Component {
     constructor(props) {
@@ -55,8 +52,8 @@ export default class Note extends Component {
                 <li className="list-group-item" key={this.props.note._id}>
                     <span onClick={this.handleEdit}>{this.props.note.text}</span>
                     <div className="pull-right action">
-                        <Link to={"/note/" + this.props.note._id}><i className="glyphicon glyphicon-eye-open text-blue"></i></Link>
-                        <a href="#" onClick={this.handleDelete}><i className="glyphicon glyphicon-remove text-red"></i></a>
+                        <Link to={"/note/" + this.props.note._id}><i className="glyphicon glyphicon-eye-open text-blue" /></Link>
+                        <a href="#" onClick={this.handleDelete}><i className="glyphicon glyphicon-remove text-red" /></a>
                     </div>
                 </li>
             );

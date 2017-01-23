@@ -10,7 +10,7 @@ class App extends Component {
         this.state = {
             isAuthenticated: this.props.isAuthenticated,
             username: ''
-        }
+        };
         this.logout = this.logout.bind(this);
     }
 
@@ -48,7 +48,7 @@ class App extends Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <Link to="/" className="navbar-brand">notesApp</Link>
+                            <Link to="/" className="navbar-brand" id="logo">notesApp</Link>
                         </div>
 
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

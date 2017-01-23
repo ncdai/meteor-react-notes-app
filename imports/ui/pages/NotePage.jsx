@@ -6,12 +6,15 @@ import { Notes } from '../../api/notes.js'
 
 import NoteText from '../components/NotePage/NoteText.jsx';
 import NoteContent from '../components/NotePage/NoteContent.jsx';
+import NotFound from '../pages/NotFoundPage.jsx';
 
 class NotePage extends Component {
     render() {
-        const { loading, note } = this.props;
+        const { loading, note, count } = this.props;
 
         if (loading) return (<span>Loading ...</span>);
+
+        if (!count) return (<NotFound />);
 
         return (
             <div className="panel panel-default no-border">
@@ -33,8 +36,10 @@ export default createContainer(({params}) => {
     const subscription = Meteor.subscribe('note', params.id);
     const loading = !subscription.ready();
     const note = Notes.findOne(params.id);
+    const count = Notes.find(params.id).count();
     return {
         loading,
-        note
+        note,
+        count
     };
 }, NotePage);

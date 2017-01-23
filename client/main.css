@@ -11,6 +11,15 @@ body {
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 
+#logo {
+    background: url("logo.png");
+    width: 147px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-indent: -9999px;
+}
+
 .form-control, .form-control:hover, .form-control:focus, .form-control:active {
     box-shadow: none;
 }

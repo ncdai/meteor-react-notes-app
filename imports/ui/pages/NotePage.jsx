@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import DocumentTitle from 'react-document-title';
+
 import { Notes } from '../../api/notes.js'
 
 import NoteText from '../components/NotePage/NoteText.jsx';
@@ -17,12 +19,14 @@ class NotePage extends Component {
         if (!count) return (<NotFound />);
 
         return (
-            <div className="panel panel-default no-border">
-                <div className="panel-body">
-                    <NoteText note={note} />
-                    <NoteContent note={note} />
+            <DocumentTitle title={note.text}>
+                <div className="panel panel-default no-border">
+                    <div className="panel-body">
+                        <NoteText note={note} />
+                        <NoteContent note={note} />
+                    </div>
                 </div>
-            </div>
+            </DocumentTitle>
         );
     }
 }

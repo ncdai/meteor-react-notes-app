@@ -2,8 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import DocumentTitle from 'react-document-title';
+
 import { Notes } from '../../api/notes.js';
-// import '../../api/methods.js';
 
 import NoteItem from './NoteItem.jsx';
 
@@ -30,20 +31,22 @@ class NotesList extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <input onChange={this.handleChange} className="form-control" value={this.state.text} placeholder="Enter your note" />
-                    </div>
-                </form>
-                {this.props.notes.length ?
-                <ul id="notes-list" className="list-group">
-                    {this.props.notes.map((note) => (
-                        <NoteItem key={note._id} note={note} />
-                    ))}
-                </ul> : <p>Not found your note, please add your note</p>
-                }
-            </div>
+            <DocumentTitle title="notesApp">
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <input onChange={this.handleChange} className="form-control" value={this.state.text} placeholder="Enter your note" />
+                        </div>
+                    </form>
+                    {this.props.notes.length ?
+                    <ul id="notes-list" className="list-group">
+                        {this.props.notes.map((note) => (
+                            <NoteItem key={note._id} note={note} />
+                        ))}
+                    </ul> : <p>Not found your note, please add your note</p>
+                    }
+                </div>
+            </DocumentTitle>
         );
     }
 }
